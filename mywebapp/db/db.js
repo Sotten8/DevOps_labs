@@ -1,17 +1,18 @@
 import pg from 'pg';
 import config from '../config.js';
 
-const { Client } = pg;
+const { Pool } = pg;
 
-const executeQuery = async (query, values = []) => {
-  const client = new Client({ connectionString: config.db_url });
-  await client.connect();
-  try {
-    return await client.query(query, values);
-  } finally {
-    await client.end();
-  }
-};
+const pool = new Pool({
+  connectionString: config.db_url,
+});
+
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
+});
+
+const executeQuery = (query, values = []) => pool.query(query, values);
 
 export default {
   getAllTasks: () =>
@@ -34,4 +35,5 @@ export default {
       [id],
     ),
   ping: () => executeQuery('SELECT 1'),
+  pool,
 };
