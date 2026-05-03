@@ -1,5 +1,5 @@
 import express from 'express';
-import TasksDB from './db.js';
+import TasksDB from './db/db.js';
 
 const app = express();
 app.use(express.json());
