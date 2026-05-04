@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const GLOBAL_CONFIG = '/etc/mywebapp/config.json';
+const GLOBAL_CONFIG = process.env.CONFIG_PATH || '/etc/mywebapp/config.json';
 const LOCAL_CONFIG = './config.json';
 
 let configData = {};
