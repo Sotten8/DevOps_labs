@@ -51,7 +51,7 @@ router.get(
       <html>
         <body>
           <h2>Tasks List</h2>
-          <table>
+          <table border="1">
             <tr>
               <th>ID</th>
               <th>Title</th>
