@@ -3,7 +3,7 @@ set -e
 echo "4. Setting up application..."
 
 mkdir -p "$WORK_DIR"
-cp -r ./* "$WORK_DIR/"
+cp -r ./mywebapp/* "$WORK_DIR/"
 cd "$WORK_DIR"
 
 npm install --no-fund --no-audit
