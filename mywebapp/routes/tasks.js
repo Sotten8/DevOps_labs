@@ -51,7 +51,7 @@ router.get(
       <html>
         <body>
           <h2>Tasks List</h2>
-          <table border="1" style="border-collapse: collapse;" cellpadding="5">
+          <table>
             <tr>
               <th>ID</th>
               <th>Title</th>
