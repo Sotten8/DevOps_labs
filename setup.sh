@@ -9,7 +9,7 @@ fi
 export VARIANT_N=19
 export WORK_DIR="/opt/mywebapp"
 
-echo ">>> Initializing deployment for Variant $VARIANT_N..."
+echo ">>> Initializing deployment..."
 
 bash ./scripts/1st_system.sh
 bash ./scripts/2nd_db.sh
