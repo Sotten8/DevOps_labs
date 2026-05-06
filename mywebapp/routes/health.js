@@ -5,14 +5,14 @@ import { asyncHandler } from '../middlewares/error.js';
 const router = Router();
 
 router.get('/alive', (req, res) => {
-  res.json({ status: 200, message: 'OK' });
+  res.status(200).send('OK');
 });
 
 router.get(
   '/ready',
   asyncHandler(async (req, res) => {
     await TasksDB.ping();
-    res.json({ status: 200, message: 'OK' });
+    res.status(200).send('OK');
   }),
 );
 
