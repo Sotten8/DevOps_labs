@@ -32,8 +32,9 @@ router.get(
   asyncHandler(async (req, res) => {
     const result = await TasksDB.getAllTasks();
     const tasks = result.rows;
+    const accept = req.headers.accept || '';
 
-    if ((req.headers.accept || '').includes('text/html')) {
+    if (accept.includes('text/html')) {
       const rows = tasks
         .map(
           (t) => `
@@ -63,8 +64,17 @@ router.get(
         </body>
       </html>
     `);
-    } else {
+    } else if (
+      accept.includes('application/json') ||
+      accept.includes('*/*') ||
+      accept === ''
+    ) {
       res.json(tasks);
+    } else {
+      res.status(406).json({
+        status: 406,
+        error: 'Only text/html or application/json supported',
+      });
     }
   }),
 );
@@ -81,6 +91,18 @@ router.post(
       throw error;
     }
 
+    const accept = req.headers.accept || '';
+    if (
+      !accept.includes('application/json') &&
+      !accept.includes('*/*') &&
+      accept !== ''
+    ) {
+      return res.status(406).json({
+        status: 406,
+        error: 'Only text/html or application/json supported',
+      });
+    }
+
     const result = await TasksDB.createTask(title);
     res.status(201).json(result.rows[0]);
   }),
@@ -90,6 +112,20 @@ router.post(
 router.post(
   '/tasks/:id/done',
   asyncHandler(async (req, res) => {
+    const accept = req.headers.accept || '';
+    if (
+      !accept.includes('application/json') &&
+      !accept.includes('*/*') &&
+      accept !== ''
+    ) {
+      return res
+        .status(406)
+        .json({
+          status: 406,
+          error: 'Only text/html or application/json supported',
+        });
+    }
+
     const result = await TasksDB.completeTask(req.params.id);
 
     if (result.rowCount === 0) {
