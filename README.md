@@ -33,6 +33,15 @@ Task Tracker (mywebapp) — це сервіс для керування зада
 - `status` — статус (`in progress` або `done`)
 - `created_at` — дата створення
 
+### Стек технологій
+
+* **Середовище виконання:** Node.js (v20+)
+* **Framework:** Express.js
+* **База даних:** PostgreSQL
+* **Вебсервер:** Nginx (Reverse Proxy)
+* **Керування процесами:** Systemd
+* **Автоматизація:** Bash-скрипти
+
 ### АРІ Ендпоінти
 
 **Бізнес-логіка:**
@@ -83,7 +92,6 @@ Task Tracker (mywebapp) — це сервіс для керування зада
 ### Базовий образ та вимоги до ВМ
 
 **Базовий образ:** Офіційний образ ([Ubuntu Server 24.04.4 LTS](https://ubuntu.com/download/server))
-
 
 **Вимоги до ресурсів:**
 
