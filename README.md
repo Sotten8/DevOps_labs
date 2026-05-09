@@ -91,7 +91,9 @@ Task Tracker (mywebapp) — це сервіс для керування зада
 
 ### Базовий образ та вимоги до ВМ
 
-**Базовий образ:** Офіційний образ ([Ubuntu Server 24.04.4 LTS](https://ubuntu.com/download/server))
+**Базовий образ:** Офіційний образ [Ubuntu Server 24.04.4 LTS](https://ubuntu.com/download/server)
+
+Для перевірки використано програмне забезпечення Oracle VirtualBox.
 
 **Вимоги до ресурсів:**
 
